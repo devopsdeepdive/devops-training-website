@@ -6,6 +6,51 @@
   <meta name="description" content="DevOps DeepDive - DevOps and AWS Cloud hands-on training, real-world projects, interview preparation and career guidance.">
   <title>DevOps DeepDive | DevOps & AWS Cloud Training</title>
   <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Registration section layout improvements */
+    #register .register-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      align-items: start;
+      gap: 40px;
+    }
+    #register .google-form-card {
+      width: 100%;
+      max-width: none;
+      min-width: 0;
+      box-sizing: border-box;
+      padding: 24px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    #register .google-form-card iframe {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      border: 0;
+      border-radius: 8px;
+      background: #fff;
+    }
+    #register .form-note {
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+    @media (max-width: 900px) {
+      #register .register-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+      }
+      #register .google-form-card {
+        padding: 16px;
+      }
+      #register .google-form-card iframe {
+        height: 1900px;
+      }
+    }
+  </style>
+
 </head>
 <body>
   <div class="topbar">
@@ -80,7 +125,7 @@
           <div class="tool tool-jenkins">J</div>
           <div class="tool tool-tf">◆</div>
           <div class="devops-loop"><span>DEV</span><b>∞</b><span>OPS</span></div>
-          <div class="mini-tools"><span>Git</span><span>Ansible</span><span>Linux</span><span>☁</span></div>
+          <div class="mini-tools"><span>Git</span><span>Azure DevOps</span><span>Linux</span><span>☁</span></div>
         </div>
       </div>
     </section>
@@ -136,8 +181,9 @@
           <div class="tech"><div class="tech-logo docker">▦</div><b>Docker</b><small>Containers</small></div>
           <div class="tech"><div class="tech-logo k8s">K</div><b>Kubernetes</b><small>Container Orchestration</small></div>
           <div class="tech"><div class="tech-logo terraform">◆</div><b>Terraform</b><small>Infrastructure as Code</small></div>
-          <div class="tech"><div class="tech-logo ansible">A</div><b>Ansible</b><small>Configuration Management</small></div>
+          <div class="tech"><div class="tech-logo azure">AD</div><b>Azure DevOps</b><small>Boards, Repos & Pipelines</small></div>
           <div class="tech"><div class="tech-logo aws">aws</div><b>AWS Cloud</b><small>Cloud Infrastructure</small></div>
+          <div class="tech"><div class="tech-logo monitoring">M</div><b>Grafana / Prometheus</b><small>Monitoring & Observability</small></div>
         </div>
 
         <div class="curriculum">
@@ -157,8 +203,9 @@
               <li>Kubernetes architecture, Pods, Deployments & Services</li>
               <li>ConfigMaps, Secrets, Storage & Ingress</li>
               <li>Helm & application packaging</li>
+              <li>Prometheus metrics, Grafana dashboards & alerting</li>
               <li>Terraform infrastructure automation</li>
-              <li>Ansible automation & configuration management</li>
+              <li>Azure DevOps Boards, Repos & Pipelines</li>
             </ul>
           </div>
           <div>
@@ -226,15 +273,14 @@
     <section id="pricing" class="section pricing-section">
       <div class="container">
         <div class="section-heading">
-          <span>PRICING</span>
-          <h2>Choose your <strong>training plan</strong></h2>
-          <p>Replace the sample pricing below with your actual course fee before publishing.</p>
+          <span>OUR TRAINING PROGRAMS</span>
+          <h2>Choose your <strong>training program</strong></h2>
+          <p>Choose the training program that best fits your learning goals.</p>
         </div>
 
         <div class="price-grid">
           <div class="price-card">
             <h3>DevOps + AWS</h3>
-            <p class="price">₹18,000 <small>/ complete course</small></p>
             <ul>
               <li>✓ Complete DevOps curriculum</li>
               <li>✓ AWS Cloud modules</li>
@@ -247,18 +293,17 @@
           </div>
 
           <div class="price-card featured">
-            <div class="popular">MOST POPULAR</div>
-            <h3>Career Track</h3>
-            <p class="price">₹20,000 <small>/ complete program</small></p>
+            <div class="popular">AZURE DEVOPS</div>
+            <h3>Azure DevOps</h3>
             <ul>
-              <li>✓ Everything in DevOps + AWS</li>
-              <li>✓ Advanced Kubernetes</li>
-              <li>✓ Terraform projects</li>
-              <li>✓ Mock interviews</li>
-              <li>✓ Project & resume review</li>
-              <li>✓ Career guidance</li>
+              <li>✓ Azure Boards for work planning</li>
+              <li>✓ Azure Repos and Git workflows</li>
+              <li>✓ Azure Pipelines for CI/CD</li>
+              <li>✓ Build and release pipelines</li>
+              <li>✓ Connect pipelines with applications and deployments</li>
+              <li>✓ Hands-on labs and project practice</li>
             </ul>
-            <a href="#register" class="btn btn-primary full">Start Learning</a>
+            <a href="#register" class="btn btn-primary full">Enquire Now</a>
           </div>
         </div>
       </div>
@@ -276,24 +321,21 @@
           </div>
         </div>
 
-        <form id="enquiryForm" class="form-card">
+        <div class="form-card google-form-card">
           <h3>Course Enquiry / Registration</h3>
-          <label>Full Name<input name="name" required placeholder="Your name"></label>
-          <label>Email<input name="email" type="email" required placeholder="you@example.com"></label>
-          <label>Phone / WhatsApp<input name="phone" required placeholder="+91"></label>
-          <label>Experience
-            <select name="experience">
-              <option>Fresher</option>
-              <option>0–2 Years</option>
-              <option>3–5 Years</option>
-              <option>6+ Years</option>
-            </select>
-          </label>
-          <label>Message<textarea name="message" rows="3" placeholder="Tell us what you want to learn..."></textarea></label>
-          <button class="btn btn-primary full" type="submit">Send Enquiry →</button>
-          <p class="form-note">This demo form opens your email client. Connect it to Google Forms/Formspree/backend before production.</p>
-          <p id="formStatus" class="form-status" aria-live="polite"></p>
-        </form>
+          <p class="form-note">Fill in the form below and we'll contact you with batch timing, fee and registration details.</p>
+
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSeDq9ytakej_Zk_N4JkHvjBW43l9NqP6fXkFE9JK3UYLUlkgA/viewform?embedded=true"
+            width="100%"
+            height="1853"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            title="DevOps DeepDive Course Enquiry and Registration">
+            Loading…
+          </iframe>
+        </div>
       </div>
     </section>
 
@@ -306,7 +348,7 @@
         <details><summary>Who can join the course?</summary><p>Freshers, developers, system administrators, cloud engineers and working IT professionals who want to move into DevOps can join.</p></details>
         <details><summary>Is the training hands-on?</summary><p>Yes. The website content is designed around practical labs, projects and implementation.</p></details>
         <details><summary>Do you provide interview preparation?</summary><p>Yes. The course can include scenario-based questions, troubleshooting discussions, resume guidance and mock interviews.</p></details>
-        <details><summary>How do I register?</summary><p>Click Register Now and submit the enquiry form. Replace the form with your Google Form link if you already have one.</p></details>
+        <details><summary>How do I register?</summary><p>Click Register Now and submit the Google Form to send your enquiry or registration details.</p></details>
       </div>
     </section>
 
